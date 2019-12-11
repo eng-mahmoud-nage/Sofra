@@ -1,5 +1,6 @@
 <?php
 
+
 return [
 
     /*
@@ -36,14 +37,36 @@ return [
     */
 
     'guards' => [
+        // defualt web for admin
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
+        // defualt api
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
+            'hash' => false,
+        ],
+
+        'resturant-web' => [
+            'driver' => 'session',
+            'provider' => 'restaurants',
+        ],
+        'client-web' => [
+            'driver' => 'session',
+            'provider' => 'clients',
+        ],
+
+        'resturant-api' => [
+            'driver' => 'token',
+            'provider' => 'restaurants',
+            'hash' => false,
+        ],
+
+        'client-api' => [
+            'driver' => 'token',
+            'provider' => 'clients',
             'hash' => false,
         ],
     ],
@@ -69,6 +92,16 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+
+        'restaurants' => [
+            'driver' => 'eloquent',
+            'model' => App\Resturant\Resturant::class,
+        ],
+
+        'clients' => [
+            'driver' => 'eloquent',
+            'model' => App\Client\Client::class,
         ],
 
         // 'users' => [

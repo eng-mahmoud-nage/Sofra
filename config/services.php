@@ -29,5 +29,17 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    
+    'github' => [
+        'client_id' => env('GITHUB_CLIENT_ID'),
+        'client_secret' => env('GITHUB_CLIENT_SECRET'),
+        'redirect' => env('GITHUB_CALLBACK_URL'),
+    ],
+
+    'facebook' => [
+        'client_id' => env('754944594916646'),
+        'client_secret' => env('cfe396792fbc3781487c88e92901bd8d'),
+        'redirect' => 'http://localhost/BloodBank/BloodBank/public/auth/facebook/callback',
+    ],
 
 ];
