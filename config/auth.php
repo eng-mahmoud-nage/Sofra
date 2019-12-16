@@ -49,7 +49,7 @@ return [
             'hash' => false,
         ],
 
-        'resturant-web' => [
+        'restaurant-web' => [
             'driver' => 'session',
             'provider' => 'restaurants',
         ],
@@ -58,7 +58,7 @@ return [
             'provider' => 'clients',
         ],
 
-        'resturant-api' => [
+        'restaurant-api' => [
             'driver' => 'token',
             'provider' => 'restaurants',
             'hash' => false,
@@ -96,7 +96,7 @@ return [
 
         'restaurants' => [
             'driver' => 'eloquent',
-            'model' => App\Resturant\Resturant::class,
+            'model' => App\Restaurants\Restaurant::class,
         ],
 
         'clients' => [

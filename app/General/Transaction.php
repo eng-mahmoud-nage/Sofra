@@ -14,7 +14,7 @@ class Transaction extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = array('order_id', 'content', 'total_sales', 'paid', 'residual');
+    protected $fillable = array('restaurant_id', 'paid', 'residual');
 
     public function orders()
     {
@@ -23,7 +23,7 @@ class Transaction extends Model
 
     public function restaurant()
     {
-        return $this->morphMany('App\Resturant\Resturant', 'resturantable');
+        return $this->belongsTo('App\Restaurant\Restaurant', 'restaurant_id');
     }
 
 }

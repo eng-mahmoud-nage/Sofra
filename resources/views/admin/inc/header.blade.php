@@ -180,15 +180,6 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-                {{--       //categories         --}}
-                <li class="nav-item has-treeview">
-                    <a class="nav-link" href='{{url(route('category.index'))}}'>
-                        <i class="nav-icon fa fa-book-open"></i>
-                        <p>
-                            Categories
-                        </p>
-                    </a>
-                </li>
                 {{--       // cities         --}}
                 <li class="nav-item has-treeview">
                     <a class="nav-link">
@@ -217,7 +208,7 @@
                 <li class="nav-item">
                     <a href="{{url(route('admin.index'))}}" class="nav-link">
                         <i class="fas fa-user-cog nav-icon"></i>
-                        <p>Users</p>
+                        <p>Admins</p>
                     </a>
                 </li>
                 {{--       // Clients         --}}
@@ -225,6 +216,58 @@
                     <a href="{{url(route('client.index'))}}" class="nav-link">
                         <i class="fa fa-users nav-icon"></i>
                         <p>Clients</p>
+                    </a>
+                </li>
+                {{--       // Restaurants         --}}
+                <li class="nav-item">
+                    <a href="{{url(route('restaurant.index'))}}" class="nav-link">
+                        <i class="fas fa-utensils nav-icon"></i>
+                        <p>Restaurants</p>
+                    </a>
+                </li>
+                {{--       //Products         --}}
+                <li class="nav-item has-treeview">
+                    <a class="nav-link" href='{{url(route('product.index'))}}'>
+                        <i class="fab fa-product-hunt nav-icon"></i>
+                        <p>
+                            Products
+                        </p>
+                    </a>
+                </li>
+                {{--       //Orders         --}}
+                <li class="nav-item has-treeview">
+                    <a class="nav-link" href='{{url(route('order.index'))}}'>
+                        <i class="far fa-clipboard nav-icon"></i>
+                        <p>
+                            Orders
+                        </p>
+                    </a>
+                </li>
+                {{--       //Offers         --}}
+                <li class="nav-item has-treeview">
+                    <a class="nav-link" href='{{url(route('offer.index'))}}'>
+                        <i class="fab fa-salesforce nav-icon"></i>
+                        <p>
+                            Offers
+                        </p>
+                    </a>
+                </li>
+                {{--       //Reviews         --}}
+                <li class="nav-item has-treeview">
+                    <a class="nav-link" href='{{url(route('review.index'))}}'>
+                        <i class="fab fa-accusoft nav-icon"></i>
+                        <p>
+                            Reviews
+                        </p>
+                    </a>
+                </li>
+                {{--       //categories         --}}
+                <li class="nav-item has-treeview">
+                    <a class="nav-link" href='{{url(route('category.index'))}}'>
+                        <i class="nav-icon fa fa-book-open"></i>
+                        <p>
+                            Categories
+                        </p>
                     </a>
                 </li>
                 {{--       // Messages         --}}

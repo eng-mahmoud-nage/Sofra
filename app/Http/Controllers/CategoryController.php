@@ -1,21 +1,22 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
-use App\Resturant\Category;
+use App\Restaurants\Category;
+
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller 
+class CategoryController extends Controller
 {
 
- /**
+    /**
      * Display a listing of the resource.
      *
      * @return Response
      */
     public function index()
     {
-        $records = Category::all()->load('resturants');
+        $records = Category::all()->load('restaurants');
         return view('admin/pages/categories.all')->with(['records' => $records]);
     }
 
@@ -94,7 +95,6 @@ class CategoryController extends Controller
         Category::find($id)->delete();
         return redirect(url(route('category.index')))->with('warning', 'Category Deleted');
     }
-  
 }
 
 ?>

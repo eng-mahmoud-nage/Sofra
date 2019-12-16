@@ -1,14 +1,15 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
 use App\General\District;
 use Illuminate\Http\Request;
 
-class DistrictController extends Controller 
+class DistrictController extends Controller
 {
 
-   /**
+
+    /**
      * Display a listing of the resource.
      *
      * @return Response
@@ -91,9 +92,10 @@ class DistrictController extends Controller
      */
     public function destroy($id)
     {
-      District::find($id)->delete();
+        District::find($id)->delete();
         return redirect(url(route('district.index')))->with('warning', 'District Deleted');
     }
+
 }
 
 ?>

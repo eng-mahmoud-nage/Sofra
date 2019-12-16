@@ -28,7 +28,7 @@ Route::group([],function(){
         Route::post('/register', 'restraunts/AuthController@register');
         Route::post('/reset-password', 'restraunts/AuthController@reset_password');
         Route::post('/new-password', 'restraunts/AuthController@new_password');
-    
+
         Route::group(['middleware' => 'auth:restaurnt-web'], function (){
             Route::any('/profile', 'AuthController@profile');
             Route::post('/change-password', 'AuthController@changePassword');
@@ -37,7 +37,7 @@ Route::group([],function(){
             Route::get('/notification-list', 'NotificationController@notifications');
             Route::get('/unread-notification', 'NotificationController@unread_notification');
             Route::post('/set-read', 'NotificationController@set_read');
-        });  
+        });
     });
 
 
@@ -47,7 +47,7 @@ Route::group([],function(){
         Route::post('/register', 'clients/AuthController@register');
         Route::post('/reset-password', 'clients/AuthController@reset_password');
         Route::post('/new-password', 'clients/AuthController@new_password');
-    
+
         Route::group(['middleware' => 'auth:client-web'], function (){
             Route::any('/profile', 'AuthController@profile');
             Route::post('/change-password', 'AuthController@changePassword');
@@ -69,7 +69,7 @@ Route::get('auth/{provider}', 'Auth\AuthLoginSocialiteController@redirectToProvi
 Route::get('auth/{provider}/callback', 'Auth\AuthLoginSocialiteController@handleProviderCallback');
 
 Auth::routes();
-Route::group(['middleware' => ['auth:web'], 'prefix' => 'admin'], function () {
+Route::group(['middleware' => ['auth:web', 'AutoCheckPermission'], 'prefix' => 'admin'], function () {
     // dashboard page
     Route::get('/', function () {
         return view('admin.dashboard');
@@ -84,7 +84,11 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'admin'], function () {
     Route::any('/edit-profile', 'HomeController@edit_profile');
 
     Route::resource('client', 'ClientController');
-    Route::resource('resturant', 'ResturantController');
+    Route::resource('restaurant', 'RestaurantController');
+    Route::resource('product', 'ProductController');
+    Route::resource('order', 'OrderController');
+    Route::resource('offer', 'OfferController');
+    Route::resource('review', 'ReviewController');
 
     Route::resource('city', 'CityController');
     Route::resource('district', 'DistrictController');
@@ -93,12 +97,14 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'admin'], function () {
 
     Route::resource('setting', 'SettingController');
     Route::resource('contact', 'ContactController');
-    
+
     Route::resource('notification', 'NotificationController');
 
     Route::resource('admin', 'AdminController');
     Route::resource('role', 'Role\RoleController');
     Route::resource('permission', 'Role\PermissionController');
+    Route::resource('transaction', 'TransactionController');
+
 
 
     Route::get('/search', 'PostController@index');
@@ -114,7 +120,7 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'admin'], function () {
 // Route::resource('city', 'CityController');
 // Route::resource('district', 'DistrictController');
 // Route::resource('category', 'CategoryController');
-// Route::resource('prouduct', 'ProuductController');
+// Route::resource('prouduct', 'ProductController');
 // Route::resource('categoryrestaurants', 'CategoryRestaurantsController');
 // Route::resource('order', 'OrderController');
 // Route::resource('productorders', 'ProductOrdersController');

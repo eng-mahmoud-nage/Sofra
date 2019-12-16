@@ -1,14 +1,14 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
 use App\Client\Client;
 use Illuminate\Http\Request;
 
-class ClientController extends Controller 
+class ClientController extends Controller
 {
 
-  /**
+    /**
      * Display a listing of the resource.
      *
      * @return Response
@@ -36,7 +36,7 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-       //
+        //
     }
 
     /**
@@ -70,11 +70,13 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
         $c = Client::find($id);
-        if(!$request->has('status')){
-           $c->update(['status' => 0]);
+        if(!$request->has('active')){
+            $c->active = 0;
+            $c->save();
             return redirect(url(route('client.index')))->with('danger', $c->name.' Baned');
         }else{
-            $c->update(['status' => 1]);
+            $c->active = 1;
+            $c->save();
             return redirect(url(route('client.index')))->with('success', $c->name.' Active know');
         }
     }
@@ -91,7 +93,6 @@ class ClientController extends Controller
         return redirect(url(route('client.index')))->with('warning', 'Client Deleted');
     }
 
-  
 }
 
 ?>

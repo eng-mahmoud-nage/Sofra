@@ -1,11 +1,11 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
 use App\General\City;
 use Illuminate\Http\Request;
 
-class CityController extends Controller 
+class CityController extends Controller
 {
 
     /**

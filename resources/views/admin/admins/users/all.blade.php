@@ -56,7 +56,7 @@
                                                 @endforeach
                                             </td>
                                             <td>
-                                                <textarea class="border-0 bg-transparent" readonly rows="4">
+                                                <textarea class="border-0 bg-transparent" readonly minlength="1">
                                                     @foreach($record->permissions as $permission)
                                                            {{$permission->name}}
                                                        @endforeach
@@ -66,7 +66,7 @@
                                                 {!! Form::open(['method' => 'POST', 'action' => ['AdminController@update', $record->id]]) !!}
                                                 {{Form::hidden('_method', 'PUT')}}
                                                 <button class="btn btn-danger" style="width: 100%;">
-                                                    {{Form::checkbox('status', true, $record->status?true:false)}}
+                                                    {{Form::checkbox('active', true, $record->active?true:false)}}
                                                     <i class="fa fa-arrow-circle-left"></i>
                                                 </button>
                                                 {!! Form::close() !!}
@@ -105,7 +105,7 @@
                                                 {!! Form::open(['method' => 'POST', 'action' => ['AdminController@update', $record->id]]) !!}
                                                 {{Form::hidden('_method', 'PUT')}}
                                                 <button class="btn btn-danger " style="width: 100%;">
-                                                    {{Form::checkbox('status', true, $record->status?true:false)}}
+                                                    {{Form::checkbox('active', true, $record->active?true:false)}}
                                                     <i class="fa fa-arrow-circle-left"></i>
                                                 </button>
                                                 {!! Form::close() !!}

@@ -23,7 +23,7 @@ class District extends Model
 
     public function restaurants()
     {
-        return $this->hasMany('App\Resturant\Resturant');
+        return $this->hasMany('App\Restaurant\Restaurant');
     }
 
 }

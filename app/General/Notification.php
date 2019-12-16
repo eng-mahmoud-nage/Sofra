@@ -5,7 +5,7 @@ namespace App\General;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Notification extends Model 
+class Notification extends Model
 {
 
     protected $table = 'notifications';
@@ -14,21 +14,21 @@ class Notification extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = array('title', 'content', 'order_id');
+    protected $fillable = array('title', 'content', 'order_id', 'notifable_id', 'notifable_type');
 
     public function order()
     {
         return $this->belongsTo('App\General\Order', 'order_id');
     }
 
-    public function restaurant()
+    public function restaurants()
     {
-        return $this->morphMany('App\Restaurant\Restaurant', 'resturantable');
+        return $this->morphTo();
     }
 
-    public function client()
+    public function clients()
     {
-        return $this->morphMany('App\Client\Client', 'clientable');
+        return $this->morphTo();
     }
 
 }

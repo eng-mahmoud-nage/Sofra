@@ -6,7 +6,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use SebastianBergmann\Environment\Console;
-use Spatie\Permission\Contracts\Permission;
+
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
 class UsersTableSeeder extends Seeder
@@ -19,7 +20,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+       $user = DB::table('users')->insertGetId([
             'name' => 'owner',
             'email' => 'owner@Sofra.com',
             'email_verified_at' => now(),
@@ -28,20 +29,20 @@ class UsersTableSeeder extends Seeder
             'updated_at' => now()
         ]);
 
-        DB::table('roles')->insert([
+       $role = DB::table('roles')->insert([
             'name' => 'owner',
             'guard_name' => 'web',
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
-            DB::table('permissions')->insert([
+       $permissions = array( DB::table('permissions')->insert([
                 'name' => 'show admins',
                 'guard_name' => 'web',
                 'routes' => 'admin.index',
                 'created_at' => now(),
                 'updated_at' => now()
-            ]);
+            ]),
 
             DB::table('permissions')->insert([
                 'name' => 'edit admin',
@@ -49,7 +50,7 @@ class UsersTableSeeder extends Seeder
                 'routes' => 'admin.edit,admin.update',
                 'created_at' => now(),
                 'updated_at' => now()
-            ]);
+            ]),
 
              DB::table('permissions')->insert([
                 'name' => 'create admin',
@@ -57,7 +58,7 @@ class UsersTableSeeder extends Seeder
                 'routes' => 'admin.create,admin.store',
                 'created_at' => now(),
                 'updated_at' => now()
-            ]);
+            ]),
 
             DB::table('permissions')->insert([
                 'name' => 'delete admin',
@@ -65,9 +66,11 @@ class UsersTableSeeder extends Seeder
                 'routes' => 'admin.destroy',
                 'created_at' => now(),
                 'updated_at' => now()
-            ]);
-        // $user = User::where('email', 'owner@Sofra.com')->get();
-        // $user->givePermissionTo('show admins');
+            ]),
+       );
+//       $user = User::where('name', 'owner')->get();
+//       $role = Role::findByName('owner');
+//        $user->assignRole('owner');
         // $permissions = Permission::get();
         // $user->givePermissionTo();
     }

@@ -51,7 +51,7 @@
                                         <tr role="row" class="odd">
                                             <td class="sorting_1">{{$loop->iteration}}</td>
                                             <td>{{$record->name}}</td>
-                                            <td>{{$record->resturants->count()}}</td>
+                                            <td>{{$record->restaurants->count()}}</td>
                                             <td>
                                                 <a class="btn btn-primary btn-group-vertical" style="width: 90%; margin-left: 5%" href="{{url(route('category.edit', $record->id))}}">
                                                     <i class="fa fa-edit" ></i>
@@ -70,7 +70,7 @@
                                         <tr role="row" class="even">
                                             <td class="sorting_1">{{$loop->iteration}}</td>
                                             <td>{{$record->name}}</td>
-                                            <td>{{$record->resturants->count()}}</td>
+                                            <td>{{$record->restaurants->count()}}</td>
                                             <td>
                                                 <a class="btn btn-primary btn-group-vertical" style="width: 90%; margin-left: 5%" href="{{url(route('category.edit', $record->id))}}">
                                                     <i class="fa fa-edit" ></i>

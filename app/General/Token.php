@@ -1,17 +1,28 @@
 <?php
 
-namespace App;
+namespace App\General;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Token extends Model
 {
+
     protected $table = 'tokens';
-    protected $fillable = ['client_id', 'token', 'type'];
     public $timestamps = true;
 
-    public function client()
+    protected $dates = ['deleted_at'];
+    protected $fillable = array('token', 'type');
+
+
+    public function restaurants()
     {
-        return $this->belongsTo('App\Client\Client', 'client_id');
+        return $this->morphTo();
     }
+
+    public function clients()
+    {
+        return $this->morphTo();
+    }
+
 }

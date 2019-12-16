@@ -1,6 +1,6 @@
 @extends('admin.dashboard')
 @section('title')
-    Users
+    Clients
 @endsection
 @section('content')
     @if(!empty($records))
@@ -25,9 +25,6 @@
                                     E mail
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 92px;">
-                                    # of Donations
-                                </th>
-                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 92px;">
                                     Status
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 92px;">
@@ -43,18 +40,13 @@
                                             <td class="sorting_1">{{$loop->iteration}}</td>
                                             <td>{{$record->name}}</td>
                                             <td>
-                                                {{$record->e_mail}}
-                                            </td>
-                                            <td>
-                                                <a href="{{route('donation.show', $record->donation_requests->where('client_id', $record->id)->pluck('id'))}}">
-                                                    {{$record->donation_requests->where('client_id', $record->id)->count()}}
-                                                </a>
+                                                {{$record->email}}
                                             </td>
                                             <td>
                                                 {!! Form::open(['method' => 'POST', 'action' => ['ClientController@update', $record->id]]) !!}
                                                 {{Form::hidden('_method', 'PUT')}}
                                                 <button class="btn btn-danger " style="width: 90%; margin-left: 5%">
-                                                    {{Form::checkbox('status', true, $record->status?true:false)}}
+                                                    {{Form::checkbox('active', true, $record->active?true:false)}}
                                                     <i class="fa fa-arrow-circle-left"></i>
                                                 </button>
                                                 {!! Form::close() !!}
@@ -73,18 +65,13 @@
                                             <td class="sorting_1">{{$loop->iteration}}</td>
                                             <td>{{$record->name}}</td>
                                             <td>
-                                                {{$record->e_mail}}
-                                            </td>
-                                            <td>
-                                                <a href="{{route('donation.show', (int)$record->donation_requests->where('client_id', $record->id)->pluck('id')[0])}}">
-                                                    {{$record->donation_requests->where('client_id', $record->id)->count()}}
-                                                </a>
+                                                {{$record->email}}
                                             </td>
                                             <td>
                                                 {!! Form::open(['method' => 'POST', 'action' => ['ClientController@update', $record->id]]) !!}
                                                 {{Form::hidden('_method', 'PUT')}}
                                                 <button class="btn btn-danger " style="width: 90%; margin-left: 5%">
-                                                    {{Form::checkbox('status', true, $record->status?true:false)}}
+                                                    {{Form::checkbox('active', true, $record->active?true:false)}}
                                                     <i class="fa fa-arrow-circle-left"></i>
                                                 </button>
                                                 {!! Form::close() !!}
